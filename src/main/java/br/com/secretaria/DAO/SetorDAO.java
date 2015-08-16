@@ -9,5 +9,4 @@ public class SetorDAO extends Persistencia<Setor> {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
 }
