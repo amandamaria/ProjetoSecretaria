@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import br.com.secretaria.modelo.ModeloPersistencia;
 
@@ -15,45 +13,45 @@ public class Persistencia<T extends ModeloPersistencia> implements Serializable 
 
 	private static final long serialVersionUID = 1L;	
 		
-	private Configuration cfg  = new Configuration();
-	private SessionFactory sessionFactory;
-	protected Session session;
+	private Database database;
+	private Session session;
 	
-	public Persistencia(){
-		sessionFactory = cfg.configure("/br/com/secretaria/conf/hibernate.cfg.xml").buildSessionFactory();
-        session = sessionFactory.openSession();
+	public Persistencia() {
+		database = Database.getInstance();
 	}
 	
-	public Session getSession() {
+	public Session iniciarSessao() {
+		session = database.getSession();
+		session.getTransaction().begin();
 		return session;
 	}
-
-	public void setSession(Session session) {
-		this.session = session;
-	}
 	
-    public void create(T obj){    	    	
-        session.getTransaction().begin();
-        session.persist(obj);
-        session.getTransaction().commit();
+	public void encerrarSessao() {
+		encerrarSessao();
+		session.close();		
+	}
 
+    public void create(T obj) { 
+    	iniciarSessao();
+        session.persist(obj);
+        encerrarSessao();
     }
     
-    public void edit(T obj){
-        session.getTransaction().begin();
+    public void edit(T obj) {
+    	iniciarSessao();
         session.merge(obj);
-        session.getTransaction().commit();
+        encerrarSessao();
     }
     
-    public void delete(T obj){
-        session.getTransaction().begin();
+    public void delete(T obj) {
+    	iniciarSessao();
         session.delete(obj);
-        session.getTransaction().commit();
+        encerrarSessao();
     }
     
     @SuppressWarnings("rawtypes")
 	public List find(String busca){
-        Query q = session.createQuery(busca);
+        Query q = iniciarSessao().createQuery(busca);
         return q.list();
     }
 	
