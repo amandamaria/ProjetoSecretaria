@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.secretaria.modelo;
 
 import java.util.List;
@@ -24,12 +19,15 @@ import javax.persistence.Table;
 @Table(name = "cidadao")
 public class Cidadao implements ModeloPersistencia {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+    
     @Column(name = "nome")
     private String nome;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcidadao")
     private List<Processo> processoList;
 

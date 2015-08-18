@@ -8,5 +8,6 @@ public class ProcessoDAO extends Persistencia<Processo>{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 
 }

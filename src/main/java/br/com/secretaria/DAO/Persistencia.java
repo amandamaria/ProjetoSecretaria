@@ -1,3 +1,4 @@
+//	SESSION!!
 package br.com.secretaria.DAO;
 
 import java.io.Serializable;
@@ -16,17 +17,26 @@ public class Persistencia<T extends ModeloPersistencia> implements Serializable 
 		
 	private Configuration cfg  = new Configuration();
 	private SessionFactory sessionFactory;
-	private Session session;
+	protected Session session;
 	
 	public Persistencia(){
 		sessionFactory = cfg.configure("/br/com/secretaria/conf/hibernate.cfg.xml").buildSessionFactory();
         session = sessionFactory.openSession();
 	}
 	
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+	
     public void create(T obj){    	    	
         session.getTransaction().begin();
         session.persist(obj);
         session.getTransaction().commit();
+
     }
     
     public void edit(T obj){
