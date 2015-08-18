@@ -12,7 +12,7 @@
 		<property name="connection.password">123</property>
 		<property name="connection.pool_size">2</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		<!-- mapping classes -->
 		<mapping class="br.com.secretaria.modelo.Setor"/>
 		<mapping class="br.com.secretaria.modelo.Funcionario"/>

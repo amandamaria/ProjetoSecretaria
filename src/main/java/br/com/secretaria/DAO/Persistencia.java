@@ -1,3 +1,4 @@
+//	SESSION!!
 package br.com.secretaria.DAO;
 
 import java.io.Serializable;
@@ -35,6 +36,7 @@ public class Persistencia<T extends ModeloPersistencia> implements Serializable 
         session.getTransaction().begin();
         session.persist(obj);
         session.getTransaction().commit();
+
     }
     
     public void edit(T obj){

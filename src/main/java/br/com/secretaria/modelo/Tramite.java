@@ -33,9 +33,11 @@ public class Tramite implements ModeloPersistencia {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @JoinColumn(name = "idfuncionario", referencedColumnName = "id")
+    
+    @JoinColumn(name = "idfuncionario", referencedColumnName = "id")    
     @ManyToOne(optional = false)
     private Funcionario idfuncionario;
+    
     @JoinColumn(name = "idprocesso", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Processo idprocesso;
