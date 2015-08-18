@@ -15,7 +15,7 @@ public class CidadaoDAO extends Persistencia<Cidadao> {
 		String hql = "From Cidadao cidadao Where cidadao.nome LIKE :nomeCidadao";
 		Cidadao cidadaoEncontrado;
 		
-			Query query = session.createQuery(hql);
+			Query query = iniciarSessao().createQuery(hql);
 			query.setParameter("nomeCidadao", nomeCidadao);
 			cidadaoEncontrado = (Cidadao) query.uniqueResult();		
 		return cidadaoEncontrado;
