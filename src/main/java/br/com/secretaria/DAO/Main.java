@@ -6,11 +6,10 @@ import br.com.secretaria.modelo.Setor;
 
 public class Main {
 	
- @SuppressWarnings("unchecked")
-public static void main(String[] args) {	 
-	Persistencia<Setor> setorDAO = new Persistencia<Setor>();
-	List<Setor> setores = setorDAO.find("from Setor");
-	System.out.println(setores.size()+"");
- }
- 
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {	 
+		Persistencia<Setor> setorDAO = new Persistencia<Setor>();
+		List<Setor> setores = setorDAO.find("from Setor");
+		System.out.println(setores.size()+"");
+	 } 
 }
