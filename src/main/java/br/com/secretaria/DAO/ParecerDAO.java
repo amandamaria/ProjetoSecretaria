@@ -18,7 +18,7 @@ public class ParecerDAO extends Persistencia<Parecer> {
 		String hql = "From Parecer parecer Where parecer.resultado LIKE : resultadoParecer";
 		List<Parecer> resultadoEncontrado;
 		
-			Query query = session.createQuery(hql);
+			Query query = iniciarSessao().createQuery(hql);
 			query.setParameter("resultadoParecer", resultadoParecer);
 			query.list();
 			resultadoEncontrado = (List<Parecer>) query.list();		
