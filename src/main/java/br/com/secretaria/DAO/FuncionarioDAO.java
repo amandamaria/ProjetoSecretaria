@@ -2,7 +2,6 @@ package br.com.secretaria.DAO;
 
 import org.hibernate.Query;
 
-import br.com.secretaria.modelo.Cidadao;
 import br.com.secretaria.modelo.Funcionario;
 
 public class FuncionarioDAO extends Persistencia<Funcionario> {
@@ -16,7 +15,7 @@ public class FuncionarioDAO extends Persistencia<Funcionario> {
 		String hql = "From Funcionario funcionario Where funcionario.nome LIKE :nomeFuncionario";
 		Funcionario funcionarioEncontrado;
 		
-			Query query = session.createQuery(hql);
+			Query query = iniciarSessao().createQuery(hql);
 			query.setParameter("nomeFuncionario", nomeFuncionario);
 			funcionarioEncontrado = (Funcionario) query.uniqueResult();		
 		return funcionarioEncontrado;
