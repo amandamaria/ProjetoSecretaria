@@ -27,7 +27,7 @@ public class Persistencia<T extends ModeloPersistencia> implements Serializable 
 	}
 	
 	public void encerrarSessao() {
-		encerrarSessao();
+		session.getTransaction().commit();
 		session.close();		
 	}
 
@@ -50,9 +50,14 @@ public class Persistencia<T extends ModeloPersistencia> implements Serializable 
     }
     
     @SuppressWarnings("rawtypes")
-	public List find(String busca){
+	public List buscarComHQL(String busca){
         Query q = iniciarSessao().createQuery(busca);
         return q.list();
-    }
-	
+    }  
+    
+    public T buscarPorID(String busca){
+        Query q = iniciarSessao().createQuery(busca);
+        T uniqueResult = (T) q.uniqueResult();
+		return uniqueResult;
+    } 
 }
