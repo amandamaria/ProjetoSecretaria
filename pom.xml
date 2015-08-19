@@ -3,6 +3,11 @@
   <groupId>Secretaria1</groupId>
   <artifactId>Secretaria1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+    <parent>
+	    <groupId>br.com.secretaria</groupId>
+	    <artifactId>SecretariaPAI</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	 </parent>
   <dependencies>
     	<!-- Postgres --> 
 		<dependency>
